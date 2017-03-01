@@ -20,7 +20,7 @@ public class DotComBust {
 	void setUpGame(){
 		for(int i=0;i<3;i++){
 			DotCom ls = new DotCom();
-			
+			ls.name = "dot"+ i;
 		}
 	}
 	void startPlaying(){
