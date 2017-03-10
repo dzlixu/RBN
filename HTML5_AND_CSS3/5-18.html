@@ -25,19 +25,8 @@
         var img= new Image();
         img.src="https://img1.doubanio.com/lpic/s4696737.jpg";
         img.onload=function(){
-            drawImg(canvas,context,img);
-        }
-    }
-    function drawImg(canvas,context,img){
-        var scale =5;
-        var n1= img.width/scale;
-        var n2 = img.height/scale;
-        var n3= canvas.width/n1;
-        var n4 = canvas.height/n2;
-        for(var i=0;i<n3;i++){
-            for(var j =0;j<n4;j++){
-                context.drawImage(img,i*n1,j*n2,n1,n2);
-            }
+            context.fillStyle = context.createPattern(this, "repeat");
+            context.fillRect(0,0,4000,3000);
         }
     }
     window.onload=function (){
