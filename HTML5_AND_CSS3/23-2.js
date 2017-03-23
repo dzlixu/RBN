@@ -7,7 +7,72 @@ var db=openDatabase('myData','','My Database',102400);
 
 function init(){
     datatable = document.getElementById('datatable');
-    showAllData(true);
+    //showAllData(true);
+    //ÂàùÂßãÂåñÊï∞ÊçÆÂ∫ì
+  /*  var lsdata=[
+        {
+            "code":"o-1",
+            "date":"2013-12-5",
+            "goodscode":"g-1",
+            "brand":"b-1",
+            "num":1,
+            "price":12.1,
+            "person":"p-1",
+            "product":"pt-1"
+        },
+        {
+            "code":"o-2",
+            "date":"2013-12-7",
+            "goodscode":"g-2",
+            "brand":"b-2",
+            "num":2,
+            "price":13,
+            "person":"p-2",
+            "product":"pt-"
+        },
+        {
+            "code":"o-3",
+            "date":"2013-12-8",
+            "goodscode":"g-2",
+            "brand":"b-2",
+            "num":3,
+            "price":1.1,
+            "person":"p-3",
+            "product":"pt-4"
+        }
+    ];
+    db.transaction(function(tx){
+        tx.executeSql('DROP TABLE myData.orders',[],function(tx,rs){
+            alert('Âà†Èô§ÊàêÂäü');
+        })
+    })
+    db.transaction(function(tx){
+        tx.executeSql('CREATE TABLE IF NOT EXISTS orders(code TEXT, date TEXT, goodscode TEXT,brand TEXT,num INTEGER,price FLOAT,person TEXT, product TEXT)',[]);
+        })
+
+
+    for(var i=0;i<lsdata.length;i++){
+        var data = lsdata[i];
+        db.transaction(function(tx){
+                tx.executeSql('INSERT INTO orders VALUES(?,?,?,?,?,?,?,?)',[data.code,data.date,data.goodscode,data.brand, data.num, data.price,data.person, data.product],function(tx,rs){
+                    alert('ÊàêÂäü‰øùÂ≠òÊï∞ÊçÆÔºÅ');
+                },function(tx,error){
+                    alert(error.source+'::'+error.message);
+                })
+            })
+    }*/
+
+    //Ê®°ÊãüÊï∞ÊçÆ
+    //db.transaction(function(tx){
+    //    tx.executeSql('CREATE TABLE IF NOT EXISTS MsgData(name TEXT,message TEXT, time INTEGER)',[]);
+    //    tx.executeSql('SELECT * FROM MsgData',[] ,function(tx, rs){
+    //        removeAllData();
+    //        for(var i=0;i<rs.rows.length;i++){
+    //            showData(rs.rows.item(i));
+    //        }
+    //    })
+    //})
+    //
 }
 function tdxBrand_onBlur(){
     var brand= document.getElementById('tdxBrand').value;
@@ -112,10 +177,11 @@ function btnAdd_onClick(){
     data.Price=document.getElementById('tdxPrice').value;
     data.Person=document.getElementById('tdxPerson').value;
     data.Product=document.getElementById('tdxProduct').value;
+    console.log(data);
     db.transaction(function(tx){
-        tx.executeSql('CREATE TABLE IF NOT EXISTS orders(code TEXT, date TEXT, goodscode TEXT, rand TEXT, num INTEGER,price FLOAT,person TEXT, product TEXT)',[]);
-        tx.executeSql('INSERT INTO orders VALUES(?,?,?,?,?.?.?,?)',[data.Code,data.Date,data.GoodsCode,data.Brand, data.Num, data.Price,data.Person, data.Product],function(tx,rs){
-            alert('±£¥Ê ˝æ›≥…π¶£°');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS orders(code TEXT, date TEXT, goodscode TEXT, brand TEXT, num INTEGER,price FLOAT,person TEXT, product TEXT)',[]);
+        tx.executeSql('INSERT INTO orders VALUES(?,?,?,?,?,?,?,?)',[data.Code,data.Date,data.GoodsCode,data.Brand, data.Num, data.Price,data.Person, data.Product],function(tx,rs){
+            alert('‰øùÂ≠òÊï∞ÊçÆÊàêÂäüÔºÅ');
             showAllData(false);
             btnNew_onClick();
         },function(tx,error){
@@ -134,8 +200,8 @@ function btnUpdate_onClick(){
     data.Person=document.getElementById('tdxPerson').value;
     data.Product=document.getElementById('tdxProduct').value;
     db.transaction(function(tx){
-        tx.executeSql('update orders set date=?,goodscode=?,brand=?, num=?,price=?,person=?,product=£ø where code=?',[data.Date,data.GoodsCode,data.Brand, data.Num, data.Price,data.Person, data.Product,data.Code],function(tx,rs){
-            alert('≥…π¶–ﬁ∏ƒ ˝æ›£°');
+        tx.executeSql('update orders set date=?,goodscode=?,brand=?, num=?,price=?,person=?,product=Ôºü where code=?',[data.Date,data.GoodsCode,data.Brand, data.Num, data.Price,data.Person, data.Product,data.Code],function(tx,rs){
+            alert('ÊàêÂäü‰øÆÊîπÊï∞ÊçÆÔºÅ');
             showAllData(false);
         },function(tx,error){
             alert(error.source+'::'+error.message);
@@ -147,7 +213,7 @@ function btnDelete_onClick(){
     data.Code=document.getElementById('tdxCode').value;
     db.transaction(function(tx){
         tx.executeSql('delete from orders where code=?',[data.Code],function(tx,rs){
-            alert('≥…π¶…æ≥˝ ˝æ›£°');
+            alert('ÊàêÂäüÂà†Èô§Êï∞ÊçÆÔºÅ');
             showAllData(false);
         },function(tx,error){
             alert(error.source+'::'+error.message);
@@ -206,16 +272,27 @@ function tr_onClick(tr,i){
 
     function showAllData(loadPage){
     db.transaction(function(tx){
-        tx.executeSql('SELECT orders .*,brand.name as brandName,product.name as productName,person.name as personName FROM orders inner join brand on orders.brand=brand.code inner join person on orders.person=person.code inner join brand on orders.product=product.code',[],function(tx,rs){
-            if(!loadPage){
-                removeAllData();
-                for(var i=0;i<rs.rows.length;i++){
-                    showData(rs.rows.item(i),i);
+        //tx.executeSql('CREATE TABLE IF NOT EXISTS orders(code TEXT, date TEXT, goodscode TEXT, brand TEXT, num INTEGER,price FLOAT,person TEXT, product TEXT)',[]);
+        //tx.executeSql('SELECT orders.*,brand.name as brandName,product.name as productName,person.name as personName FROM orders inner join brand on orders.brand=brand.code inner join person on orders.person=person.code inner join brand on orders.product=product.code',[],function(tx,rs){
+        //    if(!loadPage){
+        //        removeAllData();
+        //        for(var i=0;i<rs.rows.length;i++){
+        //            showData(rs.rows.item(i),i);
+        //        }
+        //    }
+        //},function(tx,error){
+        //    alert(error.source+'::'+error.message);
+        //})
+        tx.executeSql('SELECT * FROM orders',[],function(tx,rs){
+                if(!loadPage){
+                    removeAllData();
+                    for(var i=0;i<rs.rows.length;i++){
+                        showData(rs.rows.item(i),i);
+                    }
                 }
-            }
-        },function(tx,error){
-            alert(error.source+'::'+error.message);
-        })
+            },function(tx,error){
+                alert(error.source+'::'+error.message);
+            })
     })
 
 }
@@ -237,7 +314,7 @@ function showData(row,i){
     var td3=document.createElement('td');
     td3.innerHTML = row.goodscode;
     var td4=document.createElement('td');
-    td4.innerHTML = row.brandName;
+    td4.innerHTML = row.brand;
     var td5=document.createElement('td');
     td5.innerHTML = row.num;
     var td6=document.createElement('td');
@@ -245,9 +322,9 @@ function showData(row,i){
     var td7=document.createElement('td');
     td7.innerHTML = parseInt(row.num)*parseFloat(row.price);
     var td8=document.createElement('td');
-    td8.innerHTML = row.personName;
+    td8.innerHTML = row.person;
     var td9=document.createElement('td');
-    td9.innerHTML = row.productName;
+    td9.innerHTML = row.product;
 
     tr.appendChild(td1);
     tr.appendChild(td2);
@@ -272,4 +349,8 @@ function showData(row,i){
         document.getElementById('hiddenProduct').value+=";";
     }
     document.getElementById('hiddenProduct').value+=row.product;
+}
+window.onload=function(){
+    init();
+    showAllData();
 }

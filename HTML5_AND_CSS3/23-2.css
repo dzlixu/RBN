@@ -43,7 +43,7 @@ input {
 }
 [id^=btnSearch] {
     width:20px;
-    color:white;
+    color: #2f37ff;
 }
 input:read-only {
     background-color:yellow;
@@ -74,10 +74,13 @@ div input[type="button"] {
      border:none;
      font-family: "宋体";
      background-color: blue;
-     color:#666;
+     color:#fff;
  }
 div input[type="button"]:hover {
     cursor: pointer;
+}
+div input[type="button"]:disabled{
+    color:#aaa;
 }
 div input [type="reset"] {
     font-size:12px;

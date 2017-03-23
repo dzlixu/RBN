@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="23-2.css"/>
     <script src="23-2.js"></script>
 </head>
-<body onload="init();">
+<body>
 <section>
     <header id="div_head_title_big">
         编辑订单信息
@@ -26,7 +26,7 @@
                 <td id="td_title_3"><span>*</span>商品编号</td>
                 <td id="td_content_3">
                     <input type="required" name="tdxGoodsCode" id="tdxGoodsCode" maxlength="12"/>
-                    <input type="button" name="btnSearchGoods" id="btnSearchGoods" value="..."
+                    <input type="button" name="btnSearchGoods" id="btnSearchGoods" value="搜"
                            onclick="btnSearchGoods_onClick();"/>
 
                 </td>
@@ -35,7 +35,7 @@
                 <td id="td_title_4">商标</td>
                 <td id="td_content_4">
                     <input type="text" name="tdxBrand" id="tdxBrand" maxlength="3" onblur="tdxBrand_onBlur();"/>
-                    <input type="button" name="btnSearchBrand" id="btnSearchBrand" value="..."
+                    <input type="button" name="btnSearchBrand" id="btnSearchBrand" value="搜"
                            onclick="btnSearchBrand_onClick();"/>
                     <input type="text" name="tdxBrandName" id="tdxBrandName" readonly/>
                 </td>
@@ -57,9 +57,9 @@
                 </td>
                 <td id="td_title_8">负责人</td>
                 <td id="td_content_8">
-                    <input type="text" name="tdxPerson" id="tdxPerson" maxlength="3" readonly="readonly"
+                    <input type="text" name="tdxPerson" id="tdxPerson" maxlength="3"
                            onblur="tdxPerson_onBlur();"/>
-                    <input type="button" name="btnSearchPerson" id="btnSearchPerson" value="..."
+                    <input type="button" name="btnSearchPerson" id="btnSearchPerson" value="搜"
                            onclick="btnSearchPerson_onClick();"/>
                     <input type="text" name="tdxPersonName" id="tdxPersonName" readonly="readonly"/>
                 </td>
@@ -68,7 +68,7 @@
                 </td>
                 <td id="td_content_9">
                     <input type="text" name="tdxProduct" id="tdxProduct" maxlength="3" onblur="tdxProduct_onBlur();"/>
-                    <input type="button" name="btnSearchPerson" id="btnSearchProduct" value="..."
+                    <input type="button" name="btnSearchPerson" id="btnSearchProduct" value="搜"
                            onclick="btnSearchProduct_onClick();"/>
                     <input type="text" name="tdxProductName" id="tdxProductName" readonly="readonly"/>
                 </td>
@@ -83,8 +83,8 @@
             <input type="button" id="btnClear" name="btnClear" value="清除" onclick="btnClear_onClick()"/>
         </div>
     </form>
-    <section>
-    </section>
+</section>
+<section>
     <header id="div_head_title">
         订单信息一览表
     </header>
