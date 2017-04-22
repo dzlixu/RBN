@@ -78,3 +78,23 @@ let b = 1;
 console.log(global.b);
 
 // window.b;
+
+
+
+function Aaa(x) {
+    if (x <= 1) {
+        return 1;
+    } else {
+        return x * arguments.callee(x - 1);
+    }
+}
+
+function a() { //父函数
+    b();
+};
+
+function b() {
+    console.info(b.caller);
+};
+
+a(); //结果就是弹出函数a和内容
