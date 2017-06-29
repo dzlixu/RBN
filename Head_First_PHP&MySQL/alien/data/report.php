@@ -35,7 +35,7 @@
  
 
    $msg= 'Thanks for submmitting the form, <br>';
-   $msg=$msg.'You were abducted :'.$when_it_happened;
+   $msg=$msg.'You were abducted :'.$when_it_happened.'<br>';
    $msg=$msg.'and were gone for ?'.$how_long.'<br>';
    $msg=$msg.'Describe them?'.$alien_description.'<br>';
    $msg=$msg.'Was Fang there?'.$fang_spotted.'<br>';
