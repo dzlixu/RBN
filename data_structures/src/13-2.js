@@ -32,7 +32,7 @@ console.log();
 if (seqSearch(nums, num)) {
   console.log(num + ' is in th array.');
 } else {
-  console.logA(num + 'is not in the array.');
+  console.log(num + 'is not in the array.');
 }
 console.log();
 dispArr(nums);
