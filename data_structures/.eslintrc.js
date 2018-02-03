@@ -10,14 +10,12 @@ module.exports = {
     "sourceType": "module"
   },
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
+    "indent": [2, 4],
     "linebreak-style": [
       "error",
       "windows"
     ],
+    "no-alert": 0,//禁止使用alert confirm prompt
     "quotes": [
       "error",
       "single"
